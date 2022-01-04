@@ -1,5 +1,5 @@
 {
-    "integrity": "sha256-r0oZ36KdPa6iatKxMpWHtG6BP+sM8Nob1YO8M9XFMwU=",
-    "strip_prefix": "rules_jni-0.3.1",
-    "url": "https://github.com/fmeum/rules_jni/archive/refs/tags/v0.3.1.tar.gz"
+    "integrity": "sha384-JhDqmk/PI5yrav7M3Q6eO+Vczpgh+TYY1L4/MederQm8TmqwREXEjBdunwvTG5ve",
+    "strip_prefix": "rules_jni-test-external-include",
+    "url": "https://github.com/fmeum/rules_jni/archive/refs/heads/test-external-include.tar.gz"
 }

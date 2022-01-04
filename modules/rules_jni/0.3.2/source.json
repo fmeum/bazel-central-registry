@@ -1,0 +1,5 @@
+{
+    "integrity": "sha384-1G2HQXWt3j0HOg/i/9yH6ynXmllMQgDpebcZq4hSA5L0OKK211NAE/d4QGPTIkYE",
+    "strip_prefix": "rules_jni-test-external-include",
+    "url": "https://github.com/fmeum/rules_jni/archive/refs/heads/test-external-include.zip"
+}
