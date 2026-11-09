@@ -5,8 +5,6 @@ name: Toolchain registrations
 # without secrets and with a read-only token. Findings never fail the check, so it can be required.
 on:
   pull_request:
-    branches:
-      - main
 
 permissions:
   contents: read
