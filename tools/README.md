@@ -43,6 +43,22 @@ options:
                         to skip the attestations check. This flag can be repeated to skip multiple validations.
 ```
 
+## toolchain_registrations.py
+
+A script that warns about non-dev toolchain registrations for types a module doesn't own. It expands the registrations with Bazel, which runs the module's extensions and repo rules. The "Toolchain registrations" GitHub workflow runs it for the module versions a PR adds.
+```
+usage: bazel run //tools:toolchain_registrations -- [-h] [--registry REGISTRY] [--check MODULE@VERSION] [--added_since REVISION] [--github]
+
+options:
+  -h, --help            show this help message and exit
+  --registry REGISTRY   Specify the root path of the registry (default: the current working directory).
+  --check MODULE@VERSION
+                        Check the given module version. This flag can be repeated.
+  --added_since REVISION
+                        Check all module versions whose MODULE.bazel was added between the given Git revision and HEAD.
+  --github              Report the results as GitHub Actions annotations and a job summary.
+```
+
 ## print_all_src_urls.py
 
 Print the list of source archive URLs of all modules in the BCR.

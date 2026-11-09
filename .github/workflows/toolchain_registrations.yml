@@ -1,0 +1,36 @@
+name: Toolchain registrations
+
+# Warns about non-dev toolchain registrations for types a module doesn't own, see tools/toolchain_registrations.py.
+# Expanding registrations runs the module's extensions and repo rules, so this must only run for pull_request events,
+# without secrets and with a read-only token. Findings never fail the check, so it can be required.
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check toolchain registrations
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+
+      # Checks out the merge commit, whose first parent is the base branch.
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Check toolchain registrations of added module versions
+        run: python3 tools/toolchain_registrations.py --added_since=HEAD^1 --github
